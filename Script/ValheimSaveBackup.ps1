@@ -26,7 +26,8 @@ $TaskExists = Get-ScheduledTask | Where-Object {$_.TaskName -Like $TaskName }
 if ($TaskExists)
     {
         Write-Host "Scheduled task already exists..." -ForegroundColor Yellow
-        Read-Host "Script finished. Hit enter to continue" -ForegroundColor Green
+        Write-Host "Script finished. Hit enter to continue" -ForegroundColor Green
+        Read-Host ""
         exit
     } 
     else 
@@ -34,5 +35,6 @@ if ($TaskExists)
         Write-Host "Scheduled task doesn't exist, creating task.." -ForegroundColor Yellow
         $Task = New-ScheduledTask -Action $Action -Trigger $Trigger -Settings $Settings
         Register-ScheduledTask -TaskName $TaskName -InputObject $Task -User $userName
-        Read-Host "Script finished. Hit enter to continue" -ForegroundColor Green
+        Write-Host "Script finished. Hit enter to continue" -ForegroundColor Green
+        Read-Host ""
     }
