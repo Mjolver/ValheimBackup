@@ -34,3 +34,4 @@ if ($TaskExists)
         $Task = New-ScheduledTask -Action $Action -Trigger $Trigger -Settings $Settings
         Register-ScheduledTask -TaskName $TaskName -InputObject $Task -User $userName
     }
+Read-Host "Script finished. Hit enter to continue" -ForegroundColor Green
